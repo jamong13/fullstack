@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        /* css - cascade style sheet */
+        *{
+            margin: 0;
+            padding: 0;
+            /* 모든 요소에 바깥 여백 0, 안쪽 여백 0 */
+        }
+        header{
+            background-color: lightgray;
+            /* 배경색 */
+            height: 100px;
+            /* 높이 */
+            text-align: center;
+            /* 가운데 정렬 */  
+        }
+        header h1{
+            line-height: 100px;
+            /* 줄간격 */
+            font-size: 30px;
+            /* 기본 글자 크기는 16px */
+        }
+        nav{
+            background-color: pink;
+            height: 50px;
+        }
+        nav ul{
+            list-style: none;
+        }
+        nav ul li{
+            float: left;
+            /* li를 가로로 배치 */
+            width: 25%;
+            text-align: center;
+            /* 가운데 정렬 */
+            line-height: 50px;
+            /* 줄간격 */
+        }
+        nav ul li a{
+            text-decoration: none;
+            /* 밑줄 제거 */
+            color: black;
+        }
+        nav ul li a:hover{
+            color: red;
+            /* a 태그에 마우스를 올렸을 때 */
+        }
+        main{
+            background-color: lightblue;
+            height: 500px;
+        }
+        section{
+            background-color: yellowgreen;
+            float: left;
+            width: 75%;
+            height: 500px;
+        }
+        aside{
+            background-color: lightcoral;
+            float: left;
+            width: 25%;
+            height: 500px;
+        }
+        footer{
+            background-color: black;
+            color: white;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>시맨틱 태그(의미를 가진 태그)</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="basic.html">블럭요소</a></li>
+        <li><a href="basic1(인라인).html">인라인요소</a></li>
+        <li><a href="basic2(인라인블럭).html">인라인블럭요소</a></li>
+        <li><a href="../251223/legacy.html">레이아웃 구성(레거시)</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section>
+        <h2>섹션제목</h2>
+        <p>섹션 내용</p>
+      </section>
+      <aside>
+        <h2>사이드</h2>
+        <p>사이드 내용</p>
+      </aside>
+    </main>
+    <footer>
+      <p>푸터 영역</p>
+  </body>
+</html>

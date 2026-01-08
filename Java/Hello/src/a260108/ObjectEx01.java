@@ -1,0 +1,35 @@
+package a260108;
+
+public class ObjectEx01 {
+    public static void main(String[] args) {
+        // 객체 생성
+        Person p1 = new Person();
+        p1.name = "홍길동";
+        p1.age = 20;
+        p1.sayHello();
+        
+        Person p2 = new Person();
+        p2.name = "김철수";
+        p2.age = 25;
+        p2.sayHello();
+        // 클래스 ≠ 객체
+        // 객체는 new로 생성
+        // 객체는 여러 개 생성 가능
+        // 객체는 값이 독립적
+    }
+}
+// public 접근제어자 쓰면 안됨
+// 클래스(Class) -> 객체를 만들기 위한 설계도(붕어빵 기계)
+// 객체(Object) -> 설계도로 만들어진 실제 물건(붕어빵)
+// 비유
+// 클래스 -> 집 설계도
+// 객체 -> 실제 지어진 집
+// 변수 -> 집의 속성(방 개수, 색상)
+// 메서드 -> 집의 기능(문 열기, 불 켜기)
+class Person{
+    String name; // 멤버 변수(필드)
+    int age;
+    void sayHello(){
+        System.out.println("안녕하세요, 저는 " + name + "입니다.");
+    }
+}

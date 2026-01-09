@@ -1,4 +1,4 @@
-package a260108;
+package a260108.student;
 
 public class Main2 {
     public static void main(String[] args) {

@@ -22,6 +22,30 @@
   margin-right: 0;
 }
 /* .content > div:nth-child(5) */
+.box .imgbox {
+  width: 280px;
+  height: 350px;
+  position: relative;
+  /* 이 박스가 기준 */
+}
+.imgbox1 .heart {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+.imgbox2 .win2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  /* 검정색에 불투명도 1(100%) */
+  left: 0;
+  top: 0;
+  transition: all 0.5s;
+}
+.imgbox2:hover .win2 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .imgbox img {
   display: block;
   width: 100%;

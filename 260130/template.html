@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let name = "홍길동";
+      let age = 25;
+      //   일반 문자열 연결
+      document.write("이름 : " + name + ", 나이 :" + age + "세 <br>");
+      document.write(`
+      이름 : ${name}<br/>
+      나이 : ${age}세
+      `);
+      console.log("첫번째 줄 \n 두번째 줄 \n 세번째 줄 \n");
+
+      let str1 = "Hello";
+      let str2 = "World";
+
+      console.log(str1 + " " + str2); // "Hello World" (연결)
+      console.log(str1 + 123); // "Hello123" (자동 변환)
+      console.log("10" + 5); // "105" (문자열 연결)
+      console.log("10" - 5); // 5 (숫자 연산)
+    </script>
+  </body>
+</html>

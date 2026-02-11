@@ -1,14 +1,14 @@
-package a260211.sort.hak1;
+package a260211.sort.hw;
 
 public class Main2 {
     public static void main(String[] args) {
 
-        Student_2[] students = {
-            new Student_2("김철수", 20, 2023003),
-            new Student_2("홍길동", 21, 2023001),
-            new Student_2("박민수", 19, 2023005),
-            new Student_2("최지은", 22, 2023002),
-            new Student_2("이영희", 20, 2023004)
+        Student[] students = {
+            new Student("김철수", 20, 2023003),
+            new Student("홍길동", 21, 2023001),
+            new Student("박민수", 19, 2023005),
+            new Student("최지은", 22, 2023002),
+            new Student("이영희", 20, 2023004)
         };
 
         // 선택 정렬
@@ -16,11 +16,11 @@ public class Main2 {
 
         // 정렬된 결과 출력
         System.out.println("정렬된 학생 목록:");
-        for (Student_2 student : students) {
+        for (Student student : students) {
             System.out.println(student);
         }
     }
-    private static void SelectionSort(Student_2[] students){
+    private static void SelectionSort(Student[] students){
         int n = students.length;
 
     for (int i = 0; i < n - 1; i++) {
@@ -33,19 +33,19 @@ public class Main2 {
             }
         }
 
-        Student_2 temp = students[minIndex];
+        Student temp = students[minIndex];
         students[minIndex] = students[i];
         students[i] = temp;
     }
     }
 }
 
-class Student_2{
+class Student{
     private String name;
     private int age;
     private int StudentId;
     
-    public Student_2(String name, int age, int studentId) {
+    public Student(String name, int age, int studentId) {
         this.name = name;
         this.age = age;
         StudentId = studentId;

@@ -38,6 +38,20 @@ public class FlightReservationMain {
                 case 3:
                     fm.checkReservation();
                     break;
+
+                case 4:
+                    fm.ticketSave();
+                    break;
+                
+                case 5:
+                    fc.upload();
+                    break;
+
+                case 0:
+                    System.out.println("프로그램을 종료합니다.");
+                    sc.close();
+                    break Outer;  // 라벨이 붙은 루프 탈출
+                
                 default:
                     break;
             }

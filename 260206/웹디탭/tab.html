@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 40 0px;
+        box-sizing: border-box;
+        border: 1px solid #000;
+      }
+      .tab-container {
+        display: flex;
+      }
+      .tab {
+        cursor: pointer;
+        width: 200px;
+        padding: 10px;
+        text-align: center;
+        box-sizing: border-box;
+        border-bottom: 1px solid #000;
+      }
+      .tab:first-child {
+        border-right: 1px solid #000;
+      }
+      .tab.active-tab {
+        border-bottom-color: transparent;
+      }
+      .tab-content {
+        display: none;
+        width: 400px;
+        box-sizing: border-box;
+      }
+      .tab-content.active-content {
+        display: block;
+      }
+      .notice p {
+        padding: 4px 8px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .notice .notice-title {
+        font-weight: bold;
+      }
+      .tab-imgs {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="tab-container">
+        <div id="menutab1" class="tab active-tab" onclick="changeTab('tab1')">
+          공지사항
+        </div>
+        <div id="menutab2" class="tab" onclick="changeTab('tab2')">갤러리</div>
+      </div>
+      <div id="tab1" class="tab-content active-content notice">
+        <p>
+          <span class="notice-title">네번째 공지사항입니다.</span
+          ><span>2019.05.21</span>
+        </p>
+        <p>
+          <span class="notice-title">세번째 공지사항입니다.</span
+          ><span>2019.04.20</span>
+        </p>
+        <p>
+          <span class="notice-title">두번째 공지사항입니다.</span
+          ><span>2019.03.21</span>
+        </p>
+        <p>
+          <span class="notice-title">첫번째 공지사항입니다.</span
+          ><span>2019.02.25</span>
+        </p>
+      </div>
+
+      <div id="tab2" class="tab-content">
+        <div class="tab-imgs">
+          <img src="images/g1.png" alt="" />
+          <img src="images/g2.png" alt="" />
+          <img src="images/g3.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  function changeTab(tabId) {
+    const allTabs = document.querySelectorAll(".tab");
+    const allContent = document.querySelectorAll(".tab-content");
+
+    allTabs.forEach(function (a) {
+      a.classList.remove("active-tab");
+    });
+    allContent.forEach(function (a) {
+      a.classList.remove("active-content");
+    });
+
+    const selectedTab = document.getElementById("menu" + tabId);
+    selectedTab.classList.add("active-tab");
+
+    const selectedContent = document.getElementById(tabId);
+    selectedContent.classList.add("active-content");
+  }
+</script>

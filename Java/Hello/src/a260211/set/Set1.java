@@ -1,5 +1,9 @@
 package a260211.set;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 //컬랙션
 //1. 데이터를 효율적으로 저장
 //2. 배열보다 유연하게 크기변경 가능
@@ -24,4 +28,35 @@ package a260211.set;
 //LinkedHashSet : HashSet과 동일, 입력 순서 유지
 //TreeSet : 정렬된 순서 유지(오름차순)
 public class Set1 {
+    public static void main(String[] args) {
+        // 객체 선언
+        Set<String> set = new HashSet<>();
+        // 데이터
+        set.add("apple");
+        set.add("banana");
+        set.add("pyopyo");
+        set.add("kiwi");
+        System.out.println();
+
+        for(String str : set){
+            System.out.println(str);
+        }
+        set.remove("apple");
+        set.add("orange");
+        set.add("orange");
+        // 중복된 요소 저장 안 함
+        System.out.println();
+
+        Iterator<String> iterSet = set.iterator();
+        while (iterSet.hasNext()) {
+            System.out.print(iterSet.next() + " ");
+            // Set이 안정성이 떨어져서 쓰는 경우도 있지만 잘 안 씀
+        }
+        System.out.println();
+        System.out.println(set.contains("orange")); // 검색 기능
+
+        // 전체 데이터 제거
+        set.clear();
+        System.out.println(set);
+    }
 }

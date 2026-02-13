@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #252422;
+      }
+      div {
+        width: 352px;
+        height: 160px;
+        margin: 50px auto;
+        overflow: hidden;
+      }
+      dl {
+        width: 352px;
+        height: 160px;
+      }
+      dt {
+        width: 25px;
+        height: 160px;
+        float: left;
+      }
+      dt span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-indent: -9999px;
+      }
+      dt.span.over {
+        cursor: pointer;
+      }
+      dt.span.selected {
+        cursor: default;
+      }
+      dd {
+        width: 277px;
+        height: 160px;
+        float: left;
+        background: #d4d0c8;
+        overflow: hidden;
+        transition: all 0.4s;
+      }
+      /* 기본 배경 사진 */
+      dt span {
+        background: url(images/blue01.png) no-repeat 0 0;
+      }
+
+      /* 클릭한(현재 dd가 열린) 배경 사진 - 선택된 */
+      da span.selected {
+        background: url(images/orange01.png) no-repeat 0 0;
+      }
+
+      /* hover 시 배경 사진 */
+      dt span:hover {
+        background: url(images/orange01.png) no-repeat 0 0;
+      }
+      dd span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-indent: -9999px;
+      }
+      dt#step1 + dd span {
+        background: url(images/menuimg01.jpg) no-repeat 0 0 / cover;
+      }
+      dt#step2 + dd span {
+        background: url(images/menuimg02.jpg) no-repeat 0 0 / cover;
+      }
+      dt#step3 + dd span {
+        background: url(images/menuimg03.jpg) no-repeat 0 0 / cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <dl>
+        <dt id="step1"><span>Step.1</span></dt>
+        <dd>
+          <span>내용1</span>
+        </dd>
+        <dt id="step2"><span>Step.2</span></dt>
+        <dd>
+          <span>내용2</span>
+        </dd>
+        <dt id="step3"><span>Step.3</span></dt>
+        <dd>
+          <span>내용3</span>
+        </dd>
+      </dl>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var ddList = document.querySelectorAll("dd");
+        var dtList = document.querySelectorAll("dl dt");
+        var dtListSpan = document.querySelectorAll("dl dt span");
+
+        for (var i = 1; i < ddList.length; i++) {
+          ddList[i].style.width = "0px";
+        }
+        dtListSpan[0].classList.add("selected");
+        for (var i = 0; i < dtList.length; i++) {
+          dtList[i].addEventListener("click", function () {
+            var nextDd = this.nextElementSibling;
+            if (nextDd.style.width == "0px" || nextDd.style.width === "") {
+              for (var j = 0; j < ddList.length; j++) {
+                ddList[j].style.width = "0px";
+              }
+            }
+            nextDd.style.width = "277px";
+            for (var k = 0; k < dtList.length; k++) {
+              dtListSpan[k].classList.remove("selected");
+            }
+            this.querySelector("span").classList.add("selected");
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

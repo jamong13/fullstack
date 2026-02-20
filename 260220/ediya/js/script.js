@@ -41,6 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   nextBtn.onclick = () => move(i + 1);
   prevBtn.onclick = () => move(i - 1);
 
+  pager.forEach((p, idx) => {
+    p.onclick = () => move(idx + 1);
+  });
+
   const startTimer = function () {
     timer = setInterval(() => {
       move(i + 1);

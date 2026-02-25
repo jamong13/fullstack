@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+.wrap {
+  width: 1000px;
+  margin: 0 auto;
+}
+header {
+  height: 200px;
+  background-color: pink;
+}
+section {
+  border: 1px solid red;
+}
+.slider_wrap {
+  width: 360px;
+}
+.slider {
+  width: 100%;
+  height: 175px;
+}
+.slider li a {
+  display: block;
+  width: 360px;
+  height: 175px;
+}
+.slider li a img {
+  width: 100%;
+  height: 100%;
+}

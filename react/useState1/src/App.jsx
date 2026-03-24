@@ -1,23 +1,31 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo, useCallback } from "react";
 import Counter from "./Counter";
 import InputSample from "./InputSample";
 import UserList from "./UserList";
 import CreateUser from "./CreateUser";
 
+function countActiveUsers(users) {
+  console.log("활성 사용자 수를 세는 중");
+  return users.filter((user) => user.active).length;
+}
+
 function App() {
+  // console.log("APP 렌더링");
+
   const [inputs, setInputs] = useState({
+    // 입력값을 하나의 객체로 관리
     username: "",
     email: "",
   });
   const { username, email } = inputs; // 구조 분해로 쉽게 사용
-  const onChange = (e) => {
-    // 하나의 함수로 name = username, name = email
+
+  const onChange = useCallback((e) => {
     const { name, value } = e.target;
-    setInputs({
-      ...inputs,
+    setInputs((prev) => ({
+      ...prev,
       [name]: value,
-    });
-  };
+    }));
+  }, []);
   // input 입력 -> onChange 실행 -> inputs 상태 변경 -> 화면에 반영
 
   // 사용자 배열 저장
@@ -39,7 +47,7 @@ function App() {
     },
   ]);
   const nextId = useRef(4); // useRef() 사용할 때 파라미터 넣어주면 .current 기본값
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     // 나중에 구현할 배열에 항목 추가하는 로직
     const user = {
       id: nextId.current,
@@ -53,22 +61,28 @@ function App() {
       email: "",
     });
     nextId.current += 1; // 다음 사용자 id 준비
-  };
-  const onRemove = (id) => {
-    // id가 일하는 사용자를 제외하고 새로운 배열을 만들어 state에 넣는다
-    setUsers(users.filter((user) => user.id !== id));
-    // filter는 조건에 만족하는 것만 남김
-  };
+  }, [users, username, email]);
+  const onRemove = useCallback(
+    (id) => {
+      // id가 일하는 사용자를 제외하고 새로운 배열을 만들어 state에 넣는다
+      setUsers(users.filter((user) => user.id !== id));
+      // filter는 조건에 만족하는 것만 남김
+    },
+    [users],
+  );
 
-  const onToggle = (id) => {
-    setUsers(
-      users.map(
-        (
-          user, // 배열을 하나씩 돌면서 새로운 배열 생성
-        ) => (user.id === id ? { ...user, active: !user.active } : user),
-      ),
-    );
-  };
+  const onToggle = useCallback(
+    (id) => {
+      setUsers(
+        users.map(
+          (
+            user, // 배열을 하나씩 돌면서 새로운 배열 생성
+          ) => (user.id === id ? { ...user, active: !user.active } : user),
+        ),
+      );
+    },
+    [users],
+  );
   // user.id === id 클릭한 사용자
   // id가 같으면 -> active 값 뒤집기
 
@@ -77,6 +91,8 @@ function App() {
   // => setUsers로 상태 업데이트
   // -> 다시 화면 렌더링
 
+  // const count = countActiveUsers(users);
+  const count = useMemo(() => countActiveUsers(users), [users]);
   return (
     <div>
       <CreateUser
@@ -88,6 +104,7 @@ function App() {
       />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
       {/* users 배열을 받아 리스트 출력 */}
+      <div>활성 사용자 수: {count}</div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 
-function User({ user, onRemove, onToggle }) {
+const User = React.memo(function User({ user, onRemove, onToggle }) {
   useEffect(() => {
     console.log("user값이 설정됨");
     console.log(user);
@@ -23,7 +23,7 @@ function User({ user, onRemove, onToggle }) {
       <button onClick={() => onRemove(user.id)}>삭제</button>
     </div>
   );
-}
+});
 
 export default User;
 // useEffect(()=>{실행할 코드},[]); 렌더링이 끝난 이후 실행되는 코드

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import KanbanBoard from "./components/KanbanBoard";
 
 const INITIAL_COLUMNS = [
@@ -33,7 +33,7 @@ const INITIAL_CARDS = [
 function App() {
   const [columns] = useState(INITIAL_COLUMNS);
   const [cards, setCards] = useState(INITIAL_CARDS);
-  const addCard = (columnId, text) => {
+  const addCard = useCallback((columnId, text) => {
     if (!text.trim()) return;
     const newCard = {
       id: crypto.randomUUID(), // 랜덤 id
@@ -42,24 +42,24 @@ function App() {
       createdAt: Date.now(),
     };
     setCards((prev) => [...prev, newCard]); // 기존 카드에 새 카드 추가
-  };
-  const moveCard = (cardId, targetColumnId) => {
+  }, []);
+  const moveCard = useCallback((cardId, targetColumnId) => {
     setCards((prev) =>
       prev.map((card) =>
         card.id === cardId ? { ...card, columnId: targetColumnId } : card,
       ),
     );
-  };
-  const deleteCard = (cardId) => {
+  }, []);
+  const deleteCard = useCallback((cardId) => {
     setCards((prev) => prev.filter((card) => card.id !== cardId));
-  };
-  const updateCard = (cardId, newText) => {
+  }, []);
+  const updateCard = useCallback((cardId, newText) => {
     setCards((prev) =>
       prev.map((card) =>
         card.id === cardId ? { ...card, text: newText } : card,
       ),
     );
-  };
+  }, []);
   return (
     <div className="app">
       <header className="header">
